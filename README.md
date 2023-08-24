@@ -11,27 +11,55 @@ Shows how to call C++ code from python.
 | math\_functions\_wrapper.cpp | C++      | pybind11 wrapper code |
 | test\_math\_functions.py     | Python   | Calls C++ code.       |
 
-The C++ class is defined
-[here.](https://github.com/rboman77/python_cplusplus/blob/a828de499cdb140ed9edddfd10aca7157e0312a4/math_functions.hpp#L5)
+This is the C++ class to call from python. The integer\_range()
+method is particularly interesting because it returns and STL vector.
+Pybind11 converts the STL vector into a python list.
 
-The pybind11 interface code is
-[here.](https://github.com/rboman77/python_cplusplus/blob/a828de499cdb140ed9edddfd10aca7157e0312a4/math_functions_wrapper.cpp#L7C8-L7C8)
+```C++
+class MathFunctions {
+  std::string label_;
+public:
+  MathFunctions(const std::string label);
+  std::string get_label();
+  int add_integers(int a, int b);
+  double divide_doubles(double a, double b);
+  // C++ code that emulates python range(limit).
+  std::vector<int> integer_range(int limit);
+};
+```
+
+This code creates the binding between Python and C++.
+
+```C++
+namespace py = pybind11;
+
+PYBIND11_MODULE(math_functions, m) {
+  py::class_<MathFunctions>(m, "MathFunctions")
+      .def(py::init<const std::string &>())
+      .def("add_integers", &MathFunctions::add_integers)
+      .def("divide_doubles", &MathFunctions::divide_doubles)
+      .def("get_label", &MathFunctions::get_label)
+      .def("integer_range", &MathFunctions::integer_range);
+}
+
+```
 
 
-# Pybind11
-
-Here we use pybind11 to interface python and C++. Other
-possibilities are:
-
-* SWIG
-* gRPC
-* cython
-
-For more information on pybind1, see
+For more information on pybind1l, see
 [this link.](https://pybind11.readthedocs.io/en/stable/)
 
-# STL Vector
+# Alternatives to Pybind11
 
-Note the method std::vector<int>MathFunctions::integer_range(int limit).
-In this case, pybind11 is able to convert the std::vector into a python
-list.
+## SWIG
+SWIG is a very powerful tool. It supports a number
+of languages including Python, Java, and Golang.
+
+## gRPC
+Grpc is a remote procedure call framework. It can be used
+to call C++ from Python, but if that is all you need, it is
+most likely more complicated that you need. But if you needed
+a framework that can integrate multiple languages all at the
+same time, it might be the way to go.
+
+## Cython
+Cython is sort of a bridge between Python and C/C++.
