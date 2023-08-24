@@ -45,13 +45,13 @@ PYBIND11_MODULE(math_functions, m) {
 ```
 
 
-For more information on pybind1l, see
+For more information on pybind11, see
 [this link.](https://pybind11.readthedocs.io/en/stable/)
 
 # Alternatives to Pybind11
 
 ## SWIG
-SWIG is a very powerful tool. It supports a number
+SWIG is a very versatile tool. It supports a number
 of languages including Python, Java, and Golang.
 
 ## gRPC
@@ -59,7 +59,8 @@ Grpc is a remote procedure call framework. It can be used
 to call C++ from Python, but if that is all you need, it is
 most likely more complicated that you need. But if you needed
 a framework that can integrate multiple languages all at the
-same time, it might be the way to go.
+same time, or if you are doing client-server computing, it is
+a great framework.
 
 ## Cython
-Cython is sort of a bridge between Python and C/C++.
+Cython is a bridge between Python and C/C++.
