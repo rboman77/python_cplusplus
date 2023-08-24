@@ -1,5 +1,6 @@
 #include "math_functions.hpp"
 #include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
 
 namespace py = pybind11;
 
@@ -8,5 +9,6 @@ PYBIND11_MODULE(math_functions, m) {
       .def(py::init<const std::string &>())
       .def("add_integers", &MathFunctions::add_integers)
       .def("divide_doubles", &MathFunctions::divide_doubles)
-      .def("get_label", &MathFunctions::get_label);
+      .def("get_label", &MathFunctions::get_label)
+      .def("integer_range", &MathFunctions::integer_range);
 }

@@ -22,4 +22,11 @@ cpp_result = handle.divide_doubles(a_float, b_float)
 fraction_error = abs(py_result - cpp_result) / py_result
 assert fraction_error < 1e-8
 
+# Example of returning a tuple from C++. Note that pybind11 converts
+# the std::vector into a python list.
+num_elements = 10
+py_list = list(range(num_elements))
+cpp_list = handle.integer_range(num_elements)
+assert isinstance(cpp_list, list)
+assert py_list == cpp_list
 

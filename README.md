@@ -19,3 +19,8 @@ possibilities are:
 | test\_math\_functions.py     | Python   | Calls C++ code.       |
 
 
+# STL Vector
+
+Note the method std::vector<int>MathFunctions::integer_range(int limit).
+In this case, pybind11 is able to convert the std::vector into a python
+list.
