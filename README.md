@@ -57,7 +57,7 @@ of languages including Python, Java, and Golang.
 ## gRPC
 Grpc is a remote procedure call framework. It can be used
 to call C++ from Python, but if that is all you need, it is
-most likely more complicated that you need. But if you needed
+most likely more complicated that you need. But if you need
 a framework that can integrate multiple languages all at the
 same time, or if you are doing client-server computing, it is
 a great framework.
