@@ -2,9 +2,11 @@
 
 
 class MathFunctions {
+  std::string label_;
 public:
   MathFunctions(const std::string label);
+  std::string get_label();
   int add_integers(int a, int b);
-  int divide_floats(float a, float b);
+  double divide_doubles(double a, double b);
 };
 
