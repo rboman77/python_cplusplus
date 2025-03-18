@@ -16,7 +16,7 @@ Shows how to call C++ code from python.
 ## C++ Class Defintion
 
 This is the C++ class to call from python. The integer\_range()
-method is particularly interesting because it returns and STL vector.
+method is particularly interesting because it returns an STL vector.
 Pybind11 converts the STL vector into a python list.
 
 
